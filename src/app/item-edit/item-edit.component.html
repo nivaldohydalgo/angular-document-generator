@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="box-edicao">
+        <div class="box-header">
+            Edição de Item do Documento
+        </div>
+        <div class="line-divider"></div>
+        <div class="box-content">
+
+            <div class="legend-itens">TEXTO DO ITEM</div>
+            <div>
+                <textarea class="box-text-area" pInputTextarea 
+                    [autoResize]="autoResize" 
+                    [(ngModel)]="editedText">
+                </textarea>
+            </div>
+
+            <div class="legend-itens">FORMATAÇÃO DO ITEM</div>
+            <div class="box-text-format">
+                <div [style.font-family]="selectedFont" [style.font-weight]="isBold ? 'bold' : 'normal'"
+                    [style.font-style]="isItalic ? 'italic' : 'normal'" [style.font-size.px]="fontSize"
+                    [style.text-decoration]="textDecoration" [style.text-align]="selectedJustify">{{editedText}}</div>
+            </div>
+            <div class="box-select-format">
+                <div>
+                    <button (click)="onClickBold()">B</button>
+                </div>
+                <div>
+                    <button (click)="onClickItalic()">I</button>
+                </div>
+                <div>
+                    <button (click)="onClickUnderline()">U</button>
+                </div>
+                <div>
+                    <p-dropdown [options]="fontOptions" 
+                        [(ngModel)]="selectedFont" 
+                        optionLabel="name" optionValue="value">
+                    </p-dropdown>
+                </div>
+                <div>
+                    <p-selectButton [options]="justifyOptions" [(ngModel)]="selectedJustify" optionLabel="icon"
+                        optionValue="justify" onChange="verconfig()">
+                        <ng-template let-item>
+                            <i [class]="item.icon"></i>
+                        </ng-template>
+                    </p-selectButton>
+                </div>
+            </div>
+
+        </div>
+        <div class="line-divider"></div>
+        <div class="box-footer">
+            <div class="botao botao-cancelar">CANCELAR</div>
+            <div class="botao botao-salvar">SALVAR</div>
+        </div>
+    </div>
+</div>
